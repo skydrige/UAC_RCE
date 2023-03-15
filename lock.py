@@ -1,2 +1,2 @@
 import pyautogui as ky
-ky.typewrite(['win','l'])
+ky.hotkey('win','l')
