@@ -16,6 +16,6 @@ time.sleep(2)
 for i in range(4):
     ky.hotkey('tab')
     time.sleep(3)
-ky.press('enter') # Solve by Lohith 
+ky.press('enter') 
 time.sleep(2)
 ky.click(500, 380, clicks=1, interval=0.2, button='left')
