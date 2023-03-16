@@ -37,6 +37,8 @@ powershell.exe -Command "Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Curr
 
 powershell.exe -Command "Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0"
 
+py_311.bat
+
 powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
 
 @echo off
@@ -54,8 +56,6 @@ if exist %repo_folder% (
 )
 
 powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
-
-py_311.bat
 
 echo %CD%
 
